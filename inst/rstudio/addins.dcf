@@ -1,0 +1,4 @@
+Name: Format ggplot2 code
+Description: Formats code according to the ggplot2 cheatsheet style
+Binding: FormatCode
+Interactive: false
