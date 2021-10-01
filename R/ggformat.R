@@ -13,7 +13,7 @@ FormatCode <- function() {
   text <- gsub("\\s+\\)", "\\)", text) # remove spaces before )
   text <- gsub("\\,\\s+", "\\, ", text) # remove extra spaces after ,
 
-  words <- c("firstline", "geom", "stat", "coord", "facet", "scale", "xlim", "ylim", "ggtitle", "labs", "xlab", "ylab", "theme_", "theme")
+  words <- c("firstline", "ggplot", "geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(", "theme_", "theme\\(")
   words_regex <- paste(words, sep = "", collapse = "|")
   # split at ggplot2 functions, keeping delimiters
   text <- strsplit(text, paste0("(?<=.)(?=", words_regex, ")"), perl = TRUE)
@@ -25,10 +25,11 @@ FormatCode <- function() {
   df$func <- sub(paste(".*(", words_regex, ").*", sep=""), "\\1", text)
   df$func[1] <- "firstline" # override any matches in first line
   df$func <- factor(df$func, levels = words) # set factor levels
-  df <- df[order(df$func, df$text),] # order by factor level
+  df <- df[order(df$func),] # order by factor level
 
   df$text[1:(nr-1)] <- paste(df$text[1:(nr-1)], "+") # add + to end of lines except last line
-  df$text[2:nr] <- paste("    ", df$text[2:nr]) # index 2nd line on
+  df$text[1] <- sub("%>% \\+", "%>%", df$text[1]) # remove + after pipe in first line
+  df$text[2:nr] <- paste("    ", df$text[2:nr], sep = "") # index 2nd line on
   rstudioapi::selectionSet(value = df$text, id = context$id) # replace text
 
 }
