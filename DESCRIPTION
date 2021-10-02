@@ -2,12 +2,14 @@ Package: ggformat
 Type: Package
 Title: Reformats ggplot2 code
 Version: 0.1.0
-Authors@R: person("Joyce, "Robbins", email="joycerobbins1@gmail.com",
+Authors@R: person("Joyce", "Robbins", email="joycerobbins1@gmail.com",
                   role=c("aut", "cre"))
 Description: Cleans up, organizes, and styles ggplot2 code
-License: What license is it under?
+License: MIT + file LICENSE
 URL: https://github.com/jtr13/ggformat
-BugReports: BugReports: https://github.com/jtr13/ggformat/issues
+BugReports: https://github.com/jtr13/ggformat/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
+Imports: 
+    rstudioapi
