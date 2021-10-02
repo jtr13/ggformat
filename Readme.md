@@ -36,11 +36,7 @@ will become:
 -   **ggplot2** functions are sorted in the following order, based on
     the **ggplot2** template (see cheatsheet):
 
-``` r
-load("words.rda")
-words <- gsub("\\\\\\(", "", words)
-words[-1]
-```
+<!-- -->
 
     ##  [1] "ggplot"  "geom_"   "stat_"   "coord_"  "facet_"  "scale_"  "xlim"   
     ##  [8] "ylim"    "ggtitle" "labs"    "xlab"    "ylab"    "theme_"  "theme"

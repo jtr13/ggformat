@@ -37,7 +37,7 @@ mtcars %>%
 
 *  **ggplot2** functions are sorted in the following order, based on the **ggplot2** template (see cheatsheet): 
 
-```{r}
+```{r, echo=FALSE}
 load("words.rda")
 words <- gsub("\\\\\\(", "", words)
 words[-1]
