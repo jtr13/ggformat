@@ -49,7 +49,7 @@ Source: https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf
 The specific sort order is: 
 
 ```{r, echo=FALSE}
-load("words.rda")
+orderwords <- readLines("orderwords.txt")
 orderwords <- gsub("\\\\\\(", "", orderwords)
 orderwords[-1]
 ```
