@@ -104,4 +104,17 @@ ggplot() +
     ylab('density')
 ```
 
+## Known issues
+
+* Doesn't wrap long lines
+
+* Can't handle package namespacing such as ``ggalluvial::geom_flow()`
+
+* Can't handle comments (puts them before `+`)
+
+
 I welcome your suggestions for improvements.
+
+## Acknowledgements
+
+The blog post ["strsplit -- but keeping the delimiter"](https://www.statworx.com/de/blog/strsplit-but-keeping-the-delimiter/) by Jakob Gepp was helpful for formulating `strsplit()` splits that keep the search terms.

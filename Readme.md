@@ -38,8 +38,9 @@ will become:
 
 <!-- -->
 
-    ##  [1] "ggplot"  "geom_"   "stat_"   "coord_"  "facet_"  "scale_"  "xlim"   
-    ##  [8] "ylim"    "ggtitle" "labs"    "xlab"    "ylab"    "theme_"  "theme"
+    ##  [1] "%>%"     "ggplot"  "geom_"   "stat_"   "coord_"  "facet_"  "scale_" 
+    ##  [8] "xlim"    "ylim"    "ggtitle" "labs"    "xlab"    "ylab"    "theme_" 
+    ## [15] "theme"
 
 -   If there are multiple instances of a function type, for example,
     multiple geoms, the current order is preserved.
@@ -102,4 +103,19 @@ commas:
         xlab('x') +
         ylab('density')
 
+## Known issues
+
+-   Doesn’t wrap long lines
+
+-   Can’t handle package namespacing such as \``ggalluvial::geom_flow()`
+
+-   Can’t handle comments (puts them before `+`)
+
 I welcome your suggestions for improvements.
+
+## Acknowledgements
+
+The blog post [“strsplit – but keeping the
+delimiter”](https://www.statworx.com/de/blog/strsplit-but-keeping-the-delimiter/)
+by Jakob Gepp was helpful for formulating `strsplit()` splits that keep
+the search terms.
