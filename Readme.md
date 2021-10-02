@@ -36,7 +36,7 @@ will become:
 -   **ggplot2** functions are sorted in the following order, based on
     the **ggplot2** template:
 
-<img src="ggplot2template.png" width="300"></img>
+<img src="ggplot2template.png" width="350" align="center"></img>
 
 Source:
 <https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf>
