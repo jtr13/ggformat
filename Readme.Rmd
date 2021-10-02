@@ -56,7 +56,7 @@ orderwords[-1]
 
 * If there are multiple instances of a function type, for example, multiple geoms, the current order is preserved.
 
-You can easily set your own sort order by forking the project and changing the `splitwords` variable in [ggformat.R](R/ggformat.R).
+* You can easily set your own sort order by forking the project and changing the `splitwords` variable in [ggformat.R](R/ggformat.R).
 
 ## How it differs from other formatting packages
 
@@ -64,7 +64,7 @@ You can easily set your own sort order by forking the project and changing the `
 
 * **formatR** does not add line breaks after `+`s in **ggplot2** code.
 
-* **styler** reformats long lines by placing putting each argument on its own line and indenting, for example:
+* **styler** reformats long lines by putting each argument on its own line and indenting, for example:
 
 ```
 ggplot() +
