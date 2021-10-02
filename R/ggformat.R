@@ -14,6 +14,7 @@ FormatCode <- function() {
   text <- gsub("\\,\\s+", "\\, ", text) # remove extra spaces after ,
 
   words <- c("firstline", "ggplot", "geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(", "theme_", "theme\\(")
+  save(words, file = "words.rda")
   words_regex <- paste(words, sep = "", collapse = "|")
   # split at ggplot2 functions, keeping delimiters
   text <- strsplit(text, paste0("(?<=.)(?=", words_regex, ")"), perl = TRUE)
