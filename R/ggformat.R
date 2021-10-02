@@ -1,5 +1,6 @@
-#' Reformat ggplot2 code
+#' FormatCode
 #'
+#' Call this function as an addin -- "Reformat ggplot2 code" -- to reformat selected code
 #'
 #' @export
 

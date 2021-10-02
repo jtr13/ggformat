@@ -2,10 +2,10 @@
 % Please edit documentation in R/ggformat.R
 \name{FormatCode}
 \alias{FormatCode}
-\title{Reformat ggplot2 code}
+\title{FormatCode}
 \usage{
 FormatCode()
 }
 \description{
-Reformat ggplot2 code
+Call this function as an addin -- "Reformat ggplot2 code" -- to reformat selected code
 }
