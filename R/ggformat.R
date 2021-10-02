@@ -30,11 +30,9 @@ FormatCode <- function() {
   # split after pipes
   text <- unlist(strsplit(text, split = "(?<=%>%)", perl = TRUE))
 
-  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(", "theme_", "theme\\(")
+  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(", "annotate\\(", "guides", "theme_", "theme\\(")
 
   split_regex <- paste(splitwords, sep = "", collapse = "|")
-
-  # save(words, file = "words.rda")  # uncomment if words are changed and knit Readme.Rmd
 
   # split at ggplot2 functions, keeping delimiters
   text <- strsplit(text, split = paste0("(?<=.)(?=", split_regex, ")"), perl = TRUE)
@@ -49,10 +47,15 @@ FormatCode <- function() {
   # set sort order
   orderwords <- c("firstline", "%>%", "ggplot", splitwords)
 
+   # save(orderwords, file = "words.rda")  # uncomment, run, and knit Readme.Rmd if orderwords are changed
+
   order_regex <- paste(orderwords, sep = "", collapse = "|")
 
   # create a column of tokens for ordering purposes
   df$token <- sub(paste(".*(", order_regex, ").*", sep=""), "\\1", text)
+
+  # override token for first line (in case it's something like g + that is, no special words)
+  df$token[1] <- "firstline"
 
   # set factor levels
   df$token <- factor(df$token, levels = orderwords) # set factor levels

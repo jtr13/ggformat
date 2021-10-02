@@ -1,5 +1,5 @@
 Joyce Robbins
-10/1/2021
+Oct 2, 2021
 
 # ggformat
 
@@ -36,14 +36,20 @@ will become:
 -   **ggplot2** functions are sorted in the following order, based on
     the **ggplot2** template:
 
+<p style="text-align:center;">
 <img src="ggplot2template.png" width="350" align="center"></img>
+</p>
+
+Labeling functions (`ggtitle`, `labs`, `xlab`, `ylab`, `annotate`) are
+placed between scales and themes. Guides are added between labeling
+functions and themes.
 
 Source:
 <https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf>
 
-    ##  [1] "%>%"     "ggplot"  "geom_"   "stat_"   "coord_"  "facet_"  "scale_" 
-    ##  [8] "xlim"    "ylim"    "ggtitle" "labs"    "xlab"    "ylab"    "theme_" 
-    ## [15] "theme"
+    ##  [1] "%>%"      "ggplot"   "geom_"    "stat_"    "coord_"   "facet_"  
+    ##  [7] "scale_"   "xlim"     "ylim"     "ggtitle"  "labs"     "xlab"    
+    ## [13] "ylab"     "annotate" "guides"   "theme_"   "theme"
 
 -   If there are multiple instances of a function type, for example,
     multiple geoms, the current order is preserved.
