@@ -33,12 +33,9 @@ will become:
 -   Each **ggplot2** function appears on its own line followed by a `+`.
     Misplaced `+`s, such as after the last function, are removed.
 
--   **ggplot2** functions are sorted in the following order, based on
-    the **ggplot2** template:
+-   **ggplot2** functions are sorted based on the **ggplot2** template:
 
-<p style="text-align:center;">
-<img src="ggplot2template.png" width="350" align="center"></img>
-</p>
+<img src="ggplot2template.png" width="500" style="display: block; margin: auto;" />
 
 Labeling functions (`ggtitle`, `labs`, `xlab`, `ylab`, `annotate`) are
 placed between scales and themes. Guides are added between labeling
@@ -47,12 +44,17 @@ functions and themes.
 Source:
 <https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf>
 
+The specific sort order is:
+
     ##  [1] "%>%"      "ggplot"   "geom_"    "stat_"    "coord_"   "facet_"  
     ##  [7] "scale_"   "xlim"     "ylim"     "ggtitle"  "labs"     "xlab"    
     ## [13] "ylab"     "annotate" "guides"   "theme_"   "theme"
 
 -   If there are multiple instances of a function type, for example,
     multiple geoms, the current order is preserved.
+
+You can easily set your own sort order by forking the project and
+changing the `splitwords` variable in [ggformat.R](R/ggformat.R).
 
 ## How it differs from other formatting packages
 
