@@ -62,7 +62,7 @@ FormatCode <- function() {
   df$token[1] <- "firstline"
 
   # set factor levels
-  df$token <- factor(df$token, levels = orderwords) # set factor levels
+  df$token <- factor(df$token, levels = gsub("\\\\", "", orderwords))
 
   # order by factor level
   df <- df[order(df$token),]
