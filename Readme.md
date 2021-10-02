@@ -34,9 +34,12 @@ will become:
     Misplaced `+`s, such as after the last function, are removed.
 
 -   **ggplot2** functions are sorted in the following order, based on
-    the **ggplot2** template (see cheatsheet):
+    the **ggplot2** template:
 
-<!-- -->
+![](ggplot2template.png)
+
+Source:
+<https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf>
 
     ##  [1] "%>%"     "ggplot"  "geom_"   "stat_"   "coord_"  "facet_"  "scale_" 
     ##  [8] "xlim"    "ylim"    "ggtitle" "labs"    "xlab"    "ylab"    "theme_" 
@@ -47,8 +50,8 @@ will become:
 
 ## How it differs from other formatting packages
 
--   Neither **formatR** nor **styler** change the order of the
-    **ggplot2** functions.
+-   THE BIG DIFFERENCE: Neither **formatR** nor **styler** change the
+    order of **ggplot2** functions.
 
 -   **formatR** does not add line breaks after `+`s in **ggplot2** code.
 
@@ -107,7 +110,7 @@ commas:
 
 -   Doesn’t wrap long lines
 
--   Can’t handle package namespacing such as \``ggalluvial::geom_flow()`
+-   Can’t handle package namespacing such as `ggalluvial::geom_flow()`
 
 -   Can’t handle comments (puts them before `+`)
 
