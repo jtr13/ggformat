@@ -16,15 +16,21 @@ Highlight code thats produce a single **ggplot2** graph, run the addin
 “Format ggplot2 code”, and the code will be cleaned up and styled. For
 example,
 
-    mtcars %>% ggplot(aes(y = mpg)) + ggtitle("mtcars") + facet_wrap(~gear) + geom_boxplot()
+    # BEFORE
+    mtcars %>% group_by(cyl) %>% summarize(mean_mpg = mean(mpg)) %>% ggplot(aes(factor(cyl), mean_mpg)) + theme_bw(14) + geom_col() + xlab("number of cylinders") + ylab("average miles per gallon") + ggtitle("mtcars")
 
 will become:
 
+    # AFTER
     mtcars %>%
-        ggplot(aes(y = mpg)) +
-        geom_boxplot() +
-        facet_wrap(~gear) +
-        ggtitle("mtcars")
+        group_by(cyl) %>%
+        summarize(mean_mpg = mean(mpg)) %>%
+        ggplot(aes(factor(cyl), mean_mpg)) +
+        geom_col() +
+        ggtitle("mtcars") +
+        xlab("number of cylinders") +
+        ylab("average miles per gallon") +
+        theme_bw(14)
 
 ## What the styled code looks like
 
