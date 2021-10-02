@@ -17,7 +17,9 @@ Highlight code thats produce a single **ggplot2** graph, run the addin
 example,
 
     # BEFORE
-    mtcars %>% group_by(cyl) %>% summarize(mean_mpg = mean(mpg)) %>% ggplot(aes(factor(cyl), mean_mpg)) + theme_bw(14) + geom_col() + xlab("number of cylinders") + ylab("average miles per gallon") + ggtitle("mtcars")
+    mtcars %>% group_by(cyl) %>% summarize(mean_mpg = mean(mpg)) %>% ggplot(aes(factor(cyl),
+    mean_mpg)) + theme_bw(14) + geom_col() + xlab("number of cylinders") +
+    ylab("average miles per gallon") + ggtitle("mtcars")
 
 will become:
 
