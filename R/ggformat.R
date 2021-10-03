@@ -74,7 +74,7 @@ FormatCode <- function() {
   df$text <- sub("%>% \\+", "%>%", df$text)
 
   # indent 2nd line on
-  df$text[2:nr] <- paste("    ", df$text[2:nr], sep = "")
+  df$text[2:nr] <- paste("  ", df$text[2:nr], sep = "")
 
   # replace text
   rstudioapi::selectionSet(value = df$text, id = context$id)

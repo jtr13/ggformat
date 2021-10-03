@@ -25,14 +25,14 @@ will become:
 
     # AFTER
     mtcars %>%
-        group_by(cyl) %>%
-        summarize(mean_mpg = mean(mpg)) %>%
-        ggplot(aes(factor(cyl), mean_mpg)) +
-        geom_col() +
-        ggtitle("mtcars") +
-        xlab("number of cylinders") +
-        ylab("average miles per gallon") +
-        theme_bw(14)
+      group_by(cyl) %>%
+      summarize(mean_mpg = mean(mpg)) %>%
+      ggplot(aes(factor(cyl), mean_mpg)) +
+      geom_col() +
+      ggtitle("mtcars") +
+      xlab("number of cylinders") +
+      ylab("average miles per gallon") +
+      theme_bw(14)
 
 ## What the styled code looks like
 
@@ -99,28 +99,27 @@ The specific sort order is:
 **ggformat** styles this code as:
 
     ggplot() +
-        geom_ribbon(data = ribbon, aes(ymin = min, ymax = max, x = x.ribbon, fill = 'lightgreen')) +
-        geom_line(data = ribbon, aes(x = x.ribbon, y = avg, color = 'black')) +
-        geom_line(data = data, aes(x = x, y = new.data, color = 'red')) +
-        scale_fill_identity(name = 'the fill', guide = 'legend', labels = c('m1')) +
-        scale_colour_manual(name = 'the colour', values = c('black' = 'black', 'red' = 'red'), labels = c('c2', 'c1')) +
-        xlab('x') +
-        ylab('density')
+      geom_ribbon(data = ribbon, aes(ymin = min, ymax = max, x = x.ribbon, fill = 'lightgreen')) +
+      geom_line(data = ribbon, aes(x = x.ribbon, y = avg, color = 'black')) +
+      geom_line(data = data, aes(x = x, y = new.data, color = 'red')) +
+      scale_fill_identity(name = 'the fill', guide = 'legend', labels = c('m1')) +
+      scale_colour_manual(name = 'the colour', values = c('black' = 'black', 'red' = 'red'), labels = c('c2', 'c1')) +
+      xlab('x') +
+      ylab('density')
 
 Note: I hope to add wrapping so long lines are broken apart after
 commas:
 
     # NOT YET IMPLEMENTED
     ggplot() +
-        geom_ribbon(data = ribbon, aes(ymin = min, ymax = max, x = x.ribbon,
-            fill = 'lightgreen')) +
-        geom_line(data = ribbon, aes(x = x.ribbon, y = avg, color = 'black')) +
-        geom_line(data = data, aes(x = x, y = new.data, color = 'red')) +
-        scale_fill_identity(name = 'the fill', guide = 'legend', labels = c('m1')) +
-        scale_colour_manual(name = 'the colour', values = c('black' = 'black',
-            'red' = 'red'), labels = c('c2', 'c1')) +
-        xlab('x') +
-        ylab('density')
+      geom_ribbon(data = ribbon, aes(ymin = min, ymax = max, x = x.ribbon, fill = 'lightgreen')) +
+      geom_line(data = ribbon, aes(x = x.ribbon, y = avg, color = 'black')) +
+      geom_line(data = data, aes(x = x, y = new.data, color = 'red')) +
+      scale_fill_identity(name = 'the fill', guide = 'legend', labels = c('m1')) +
+      scale_colour_manual(name = 'the colour', values = c('black' = 'black', 'red' = 'red'),
+        labels = c('c2', 'c1')) +
+      xlab('x') +
+      ylab('density')
 
 ## Known issues
 
