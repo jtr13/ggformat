@@ -6,6 +6,8 @@ Oct 2, 2021
 This is a one function addin package. My motivation in writing it was to
 make it easier to clean up and style **ggplot2** code.
 
+Note: this is new -- please [report bugs or leave comments](https://github.com/jtr13/ggformat/issues/new)!
+
 ## Installation
 
 `remotes::install_github("jtr13/ggformat")`
