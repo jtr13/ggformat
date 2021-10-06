@@ -17,8 +17,24 @@ FormatCode <- function() {
   # combine into one string
   text <- paste(text, collapse = "")
 
-  # remove line breaks, +,  and trailing white space
-  text <- trimws(gsub("\\n|\\+", "", text))
+  # remove line breaks and trailing white space
+  text <- trimws(gsub("\\n", "", text))
+
+  # replace double +'s  with single +'s
+  text <- gsub("\\s*\\+\\s*\\+\\s*", " \\+ ", text)
+
+  # remove + before split words
+  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_",
+                  "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(",
+"xlab\\(", "ylab\\(", "annotate\\(", " +
+  guides",                  "theme_", "theme\\(")
+
+  split_regex <- paste(splitwords, sep = "", collapse = "|")
+
+  text <- gsub(paste("\\+\\s*(", split_regex, ")", sep=""), "\\1", text)
+
+  # remove + at the very end
+  text <- sub("\\s*\\+$", "", text)
 
   # remove spaces after (
   text <- gsub("\\(\\s+", "\\(", text)
@@ -34,14 +50,14 @@ FormatCode <- function() {
   # split after pipes
   text <- unlist(strsplit(text, split = "(?<=%>%)", perl = TRUE))
 
-  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(", "annotate\\(", "guides", "theme_", "theme\\(")
-
-  split_regex <- paste(splitwords, sep = "", collapse = "|")
-
   # split at ggplot2 functions, keeping delimiters
   text <- strsplit(text, split = paste0("(?<=.)(?=", split_regex, ")"), perl = TRUE)
 
   text <- trimws(unlist(text))
+
+  # remove blank lines
+  text <- text[text != ""]
+
 
   # CREATE DATA FRAME WHICH TO BE USED FOR ORDERING LINES
 
@@ -70,8 +86,10 @@ FormatCode <- function() {
   # add + to end of lines except last line
   df$text[1:(nr-1)] <- paste(df$text[1:(nr-1)], "+")
 
-  # remove + after pipes (easier than testing first...)
+  # remove + after pipes or <- or = (easier than testing first...)
   df$text <- sub("%>% \\+", "%>%", df$text)
+  df$text <- sub("<- \\+", "<-", df$text)
+  df$text <- sub("= \\+", "=", df$text)
 
   # indent 2nd line on
   df$text[2:nr] <- paste("  ", df$text[2:nr], sep = "")
