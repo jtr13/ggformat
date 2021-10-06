@@ -121,6 +121,14 @@ commas:
       xlab('x') +
       ylab('density')
 
+## Nitty Gritty
+
+-   +’s are cleaned up so there is exactly one + at the end of every
+    line except the last, and lines ending in pipes. Specifically,
+    double +’s are replaced with single +’s, +’s before special
+    **ggplot2** words are removed, +’s are added back at the ends of
+    lines.
+
 ## Known issues
 
 -   Doesn’t wrap long lines
