@@ -1,7 +1,7 @@
 Package: ggformat
 Type: Package
 Title: Reformats ggplot2 code
-Version: 0.1.0
+Version: 0.0.0.9000
 Authors@R: person("Joyce", "Robbins", email="jtr13@columbia.edu",
                   role=c("aut", "cre"))
 Description: Cleans up, organizes, and styles ggplot2 code

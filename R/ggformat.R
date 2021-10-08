@@ -24,10 +24,9 @@ FormatCode <- function() {
   text <- gsub("\\s*\\+\\s*\\+\\s*", " \\+ ", text)
 
   # remove + before split words
-  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_",
-                  "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(",
-"xlab\\(", "ylab\\(", "annotate\\(", " +
-  guides",                  "theme_", "theme\\(")
+  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(",
+                  "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(",
+                  "annotate\\(", "guides", "theme_", "theme\\(")
 
   split_regex <- paste(splitwords, sep = "", collapse = "|")
 
@@ -47,8 +46,8 @@ FormatCode <- function() {
 
   # SPLITS
 
-  # split after pipes
-  text <- unlist(strsplit(text, split = "(?<=%>%)", perl = TRUE))
+  # split after magrittr or native pipes
+  text <- unlist(strsplit(text, split = "(?<=%>%)|(?<=\\|>)", perl = TRUE))
 
   # split at ggplot2 functions, keeping delimiters
   text <- strsplit(text, split = paste0("(?<=.)(?=", split_regex, ")"), perl = TRUE)
@@ -65,9 +64,9 @@ FormatCode <- function() {
   nr <- nrow(df)
 
   # set sort order
-  orderwords <- c("firstline", "%>%", "ggplot", splitwords)
+  orderwords <- c("firstline", "%>%", "\\|>", "ggplot", splitwords)
 
-   # writeLines(orderwords, "orderwords.txt")  # uncomment, run, and knit Readme.Rmd if orderwords are changed
+  # writeLines(orderwords, "orderwords.txt")  # uncomment, run, and knit Readme.Rmd if orderwords are changed
 
   order_regex <- paste(orderwords, sep = "", collapse = "|")
 
@@ -88,6 +87,7 @@ FormatCode <- function() {
 
   # remove + after pipes or <- or = (easier than testing first...)
   df$text <- sub("%>% \\+", "%>%", df$text)
+  df$text <- sub("\\|> \\+", "|>", df$text)
   df$text <- sub("<- \\+", "<-", df$text)
   df$text <- sub("= \\+", "=", df$text)
 

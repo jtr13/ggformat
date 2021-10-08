@@ -1,5 +1,6 @@
 firstline
 %>%
+\|>
 ggplot
 geom_
 stat_
