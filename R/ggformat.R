@@ -24,10 +24,9 @@ FormatCode <- function() {
   text <- gsub("\\s*\\+\\s*\\+\\s*", " \\+ ", text)
 
   # remove + before split words
-  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_",
-                  "xlim\\(", "ylim\\(", "ggtitle\\(", "labs\\(",
-"xlab\\(", "ylab\\(", "annotate\\(", " +
-  guides",                  "theme_", "theme\\(")
+  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(",
+                  "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(",
+                  "annotate\\(", "guides", "theme_", "theme\\(")
 
   split_regex <- paste(splitwords, sep = "", collapse = "|")
 
