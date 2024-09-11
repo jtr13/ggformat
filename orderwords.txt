@@ -1,7 +1,7 @@
 firstline
 %>%
 \|>
-ggplot
+ggplot\(
 geom_
 stat_
 coord_

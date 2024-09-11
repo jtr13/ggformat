@@ -1,5 +1,5 @@
 Joyce Robbins
-Oct 2, 2021
+September 11, 2024
 
 # ggformat
 
@@ -20,31 +20,28 @@ Highlight code thats produce a single **ggplot2** graph, run the addin
 example,
 
     # BEFORE
-    mtcars %>% group_by(cyl) %>% summarize(mean_mpg = mean(mpg)) %>% ggplot(aes(factor(cyl),
-    mean_mpg)) + theme_bw(14) + geom_col() + xlab("number of cylinders") +
-    ylab("average miles per gallon") + ggtitle("mtcars")
+    mtcars |> group_by(cyl) |> summarize(mean_mpg = mean(mpg)) |> ggplot(aes(factor(cyl),
+    mean_mpg)) + theme_bw(14) + geom_col() + labs(title = "mtcars", x = "number of cylinders", y = "average miles per gallon")
 
 will become:
 
     # AFTER
-    mtcars %>%
-      group_by(cyl) %>%
-      summarize(mean_mpg = mean(mpg)) %>%
+    mtcars |>
+      group_by(cyl) |>
+      summarize(mean_mpg = mean(mpg)) |>
       ggplot(aes(factor(cyl), mean_mpg)) +
       geom_col() +
-      ggtitle("mtcars") +
-      xlab("number of cylinders") +
-      ylab("average miles per gallon") +
+      labs(title = "mtcars", x = "number of cylinders", y = "average miles per gallon") +
       theme_bw(14)
 
 ## What the styled code looks like
 
--   `%>%`s are followed by line breaks
+- `|>`s are followed by line breaks
 
--   Each **ggplot2** function appears on its own line followed by a `+`.
-    Misplaced `+`s, such as after the last function, are removed.
+- Each **ggplot2** function appears on its own line followed by a `+`.
+  Misplaced `+`s, such as after the last function, are removed.
 
--   **ggplot2** functions are sorted based on the **ggplot2** template:
+- **ggplot2** functions are sorted based on the **ggplot2** template:
 
 <img src="ggplot2template.png" width="500" style="display: block; margin: auto;" />
 
@@ -57,25 +54,25 @@ Source:
 
 The specific sort order is:
 
-    ##  [1] "%>%"      "ggplot"   "geom_"    "stat_"    "coord_"   "facet_"  
-    ##  [7] "scale_"   "xlim"     "ylim"     "ggtitle"  "labs"     "xlab"    
-    ## [13] "ylab"     "annotate" "guides"   "theme_"   "theme"
+    ##  [1] "%>%"      "\\|>"     "ggplot"   "geom_"    "stat_"    "coord_"  
+    ##  [7] "facet_"   "scale_"   "xlim"     "ylim"     "ggtitle"  "labs"    
+    ## [13] "xlab"     "ylab"     "annotate" "guides"   "theme_"   "theme"
 
--   If there are multiple instances of a function type, for example,
-    multiple geoms, the current order is preserved.
+- If there are multiple instances of a function type, for example,
+  multiple geoms, the current order is preserved.
 
--   You can easily set your own sort order by forking the project and
-    changing the `splitwords` variable in [ggformat.R](R/ggformat.R).
+- You can easily set your own sort order by forking the project and
+  changing the `splitwords` variable in [ggformat.R](R/ggformat.R).
 
 ## How it differs from other formatting packages
 
--   THE BIG DIFFERENCE: Neither **formatR** nor **styler** change the
-    order of **ggplot2** functions.
+- THE BIG DIFFERENCE: Neither **formatR** nor **styler** change the
+  order of **ggplot2** functions.
 
--   **formatR** does not add line breaks after `+`s in **ggplot2** code.
+- **formatR** does not add line breaks after `+`s in **ggplot2** code.
 
--   **styler** reformats long lines by putting each argument on its own
-    line and indenting, for example:
+- **styler** reformats long lines by putting each argument on its own
+  line and indenting, for example:
 
 <!-- -->
 
@@ -126,19 +123,18 @@ commas:
 
 ## Nitty Gritty
 
--   +’s are cleaned up so there is exactly one + at the end of every
-    line except the last, and lines ending in pipes. Specifically,
-    double +’s are replaced with single +’s, +’s before special
-    **ggplot2** words are removed, +’s are added back at the ends of
-    lines.
+- +’s are cleaned up so there is exactly one + at the end of every line
+  except the last, and lines ending in pipes. Specifically, double +’s
+  are replaced with single +’s, +’s before special **ggplot2** words are
+  removed, +’s are added back at the ends of lines.
 
 ## Known issues
 
--   Doesn’t wrap long lines
+- Doesn’t wrap long lines
 
--   Can’t handle package namespacing such as `ggalluvial::geom_flow()`
+- Can’t handle package namespacing such as `ggalluvial::geom_flow()`
 
--   Can’t handle comments (puts them before `+`)
+- Can’t handle comments (puts them before `+`)
 
 I welcome your suggestions for improvements.
 

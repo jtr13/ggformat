@@ -1,6 +1,6 @@
 ---
 author: "Joyce Robbins"
-date: "Oct 2, 2021"
+date: "September 11, 2024"
 output: github_document
 ---
 # ggformat
@@ -19,29 +19,26 @@ Highlight code thats produce a single **ggplot2** graph, run the addin "Format g
 
 ```
 # BEFORE
-mtcars %>% group_by(cyl) %>% summarize(mean_mpg = mean(mpg)) %>% ggplot(aes(factor(cyl),
-mean_mpg)) + theme_bw(14) + geom_col() + xlab("number of cylinders") +
-ylab("average miles per gallon") + ggtitle("mtcars")
+mtcars |> group_by(cyl) |> summarize(mean_mpg = mean(mpg)) |> ggplot(aes(factor(cyl),
+mean_mpg)) + theme_bw(14) + geom_col() + labs(title = "mtcars", x = "number of cylinders", y = "average miles per gallon")
 ```
 
 will become:
 
 ```
 # AFTER
-mtcars %>%
-  group_by(cyl) %>%
-  summarize(mean_mpg = mean(mpg)) %>%
+mtcars |>
+  group_by(cyl) |>
+  summarize(mean_mpg = mean(mpg)) |>
   ggplot(aes(factor(cyl), mean_mpg)) +
   geom_col() +
-  ggtitle("mtcars") +
-  xlab("number of cylinders") +
-  ylab("average miles per gallon") +
+  labs(title = "mtcars", x = "number of cylinders", y = "average miles per gallon") +
   theme_bw(14)
 ```
 
 ## What the styled code looks like
 
-* `%>%`s are followed by line breaks
+* `|>`s are followed by line breaks
 
 * Each **ggplot2** function appears on its own line followed by a `+`. Misplaced `+`s, such as after the last function, are removed.
 
