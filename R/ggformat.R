@@ -10,7 +10,7 @@ FormatCode <- function() {
 
   text <- context$selection[[1]]$text
 
-  #if(nchar(text) == 0) stop("The selection is empty -- make sure the cursor is in the highlighted selection before running the addin.")
+  if(nchar(text) == 0) stop("The selection is empty -- make sure the cursor is in the highlighted selection before running the addin.")
 
   # GENERAL PREP AND CLEAN UP BEFORE SPLITTING LINES
 
@@ -66,7 +66,8 @@ FormatCode <- function() {
   # set sort order
   orderwords <- c("firstline", "%>%", "\\|>", "ggplot\\(", splitwords)
 
-  # writeLines(orderwords, "orderwords.txt")  # uncomment, run, and knit Readme.Rmd if orderwords are changed
+  #writeLines(orderwords, "orderwords.txt")  # uncomment, run, and knit Readme.Rmd if orderwords are changed
+  # manually remove "\\" from "\\|>" until this is fixed
 
   order_regex <- paste(orderwords, sep = "", collapse = "|")
 

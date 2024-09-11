@@ -54,7 +54,7 @@ Source:
 
 The specific sort order is:
 
-    ##  [1] "%>%"      "\\|>"     "ggplot"   "geom_"    "stat_"    "coord_"  
+    ##  [1] "%>%"      "|>"       "ggplot"   "geom_"    "stat_"    "coord_"  
     ##  [7] "facet_"   "scale_"   "xlim"     "ylim"     "ggtitle"  "labs"    
     ## [13] "xlab"     "ylab"     "annotate" "guides"   "theme_"   "theme"
 
