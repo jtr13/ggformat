@@ -18,13 +18,13 @@ FormatCode <- function() {
   text <- paste(text, collapse = "")
 
   # remove line breaks and trailing white space
-  text <- trimws(gsub("\\n", "", text))
+  text <- trimws(text)
 
   # replace double +'s  with single +'s
   text <- gsub("\\s*\\+\\s*\\+\\s*", " \\+ ", text)
 
   # remove + before split words
-  splitwords <- c("geom_", "stat_", "coord_", "facet_", "scale_", "xlim\\(",
+  splitwords <- c("\\s\\w*:?:?geom_","stat_",  "coord_", "facet_", "scale_", "xlim\\(",
                   "ylim\\(", "ggtitle\\(", "labs\\(", "xlab\\(", "ylab\\(",
                   "annotate\\(", "guides", "theme_", "theme\\(")
 
@@ -97,5 +97,4 @@ FormatCode <- function() {
 
   # replace text
   rstudioapi::selectionSet(value = df$text, id = context$id)
-  }
-
+}
